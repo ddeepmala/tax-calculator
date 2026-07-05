@@ -1,0 +1,87 @@
+{
+  "fy": "2026-27",
+  "ay": "2027-28",
+  "general": {
+    "cess_rate": 0.04
+  },
+  "new_regime": {
+    "standard_deduction": 75000,
+    "slabs": [
+      { "limit": 400000, "rate": 0.00 },
+      { "limit": 800000, "rate": 0.05 },
+      { "limit": 1200000, "rate": 0.10 },
+      { "limit": 1600000, "rate": 0.15 },
+      { "limit": 2000000, "rate": 0.20 },
+      { "limit": 2400000, "rate": 0.25 },
+      { "limit": null, "rate": 0.30 }
+    ],
+    "rebate_87a": {
+      "threshold": 1200000,
+      "max_rebate": 60000,
+      "has_marginal_relief": true
+    },
+    "surcharge": {
+      "limits": [
+        { "threshold": 5000000, "rate": 0.10 },
+        { "threshold": 10000000, "rate": 0.15 },
+        { "threshold": 20000000, "rate": 0.25 }
+      ],
+      "max_rate": 0.25
+    }
+  },
+  "old_regime": {
+    "standard_deduction": 50000,
+    "slabs_under_60": [
+      { "limit": 250000, "rate": 0.00 },
+      { "limit": 500000, "rate": 0.05 },
+      { "limit": 1000000, "rate": 0.20 },
+      { "limit": null, "rate": 0.30 }
+    ],
+    "slabs_60_to_80": [
+      { "limit": 300000, "rate": 0.00 },
+      { "limit": 500000, "rate": 0.05 },
+      { "limit": 1000000, "rate": 0.20 },
+      { "limit": null, "rate": 0.30 }
+    ],
+    "slabs_above_80": [
+      { "limit": 500000, "rate": 0.00 },
+      { "limit": 1000000, "rate": 0.20 },
+      { "limit": null, "rate": 0.30 }
+    ],
+    "rebate_87a": {
+      "threshold": 500000,
+      "max_rebate": 12500,
+      "has_marginal_relief": false
+    },
+    "surcharge": {
+      "limits": [
+        { "threshold": 5000000, "rate": 0.10 },
+        { "threshold": 10000000, "rate": 0.15 },
+        { "threshold": 20000000, "rate": 0.25 },
+        { "threshold": 50000000, "rate": 0.37 }
+      ],
+      "max_rate": 0.37
+    }
+  },
+  "deduction_limits": {
+    "allowance_exemptions": {
+      "children_education_limit_annual": 2400,
+      "hostel_limit_annual": 7200
+    },
+    "sec_80c": 150000,
+    "sec_80ccd_1b": 50000,
+    "sec_80d": {
+      "self_family_general": 25000,
+      "self_family_senior": 50000,
+      "parents_general": 25000,
+      "parents_senior": 50000
+    },
+    "sec_80tta": 10000,
+    "sec_80ttb": 50000,
+    "sec_24b": {
+      "self_occupied": 200000
+    },
+    "sec_80ee": 50000,
+    "sec_80eea": 150000
+  }
+}

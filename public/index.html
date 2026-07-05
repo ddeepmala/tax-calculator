@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>India Salary Tax Planner FY 2026-27 | FY 2026-27 Tax Calculator</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Chart.js for High-end Interactive Visualizations -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <div class="theme-toggle-container">
+        <button id="themeToggleBtn" aria-label="Toggle dark and light mode">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+    </div>
+
+    <!-- MAIN APP CONTAINER -->
+    <div class="app-layout">
+        
+        <!-- SECTION 1: LANDING PAGE -->
+        <header id="landingSection" class="landing-section">
+            <div class="hero-container">
+                <div class="hero-content animate-fade-in">
+                    <span class="badge">FY 2026-27 (AY 2027-28)</span>
+                    <h1>India Salary Tax Planner <span class="highlight">2026-27</span></h1>
+                    <p class="subtitle">Compare Old vs New Tax Regimes instantly with Section 87A Marginal Relief & optimize your deductions to save maximum tax.</p>
+                    <div class="hero-actions">
+                        <button id="startCalcBtn" class="btn btn-primary btn-lg">
+                            <i class="fa-solid fa-calculator"></i> Calculate My Tax
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="features-section">
+                <h2 class="section-heading text-center">Smart Tax Optimization Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                        <h3>Regime Comparison</h3>
+                        <p>Instant, precise comparison between Old and New regimes for FY 2026-27 side-by-side.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-chart-pie"></i></div>
+                        <h3>Deduction Optimization</h3>
+                        <p>Analyze how 80C, 80D, 80CCD(1B), and Section 24(b) lower your taxable income.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-house-chimney"></i></div>
+                        <h3>HRA Exemption Calculator</h3>
+                        <p>Auto-computes Section 10(13A) exemptions based on Metro/Non-Metro basic and rent details.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-file-pdf"></i></div>
+                        <h3>Download PDF Summary</h3>
+                        <p>Export a comprehensive, professional PDF breakdown of your salary, deductions, and tax analysis.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h3>87A Marginal Relief</h3>
+                        <p>Accurately incorporates new rules preventing tax cliffs when net income exceeds Rs. 12 Lakhs.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                        <h3>Fully Responsive</h3>
+                        <p>Plan your taxes on any device—mobile, tablet, or desktop—with our adaptive design.</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- SECTION 2: CALCULATOR WIZARD FORM -->
+        <main id="calculatorSection" class="calculator-section hidden">
+            <div class="container">
+                <div class="wizard-header">
+                    <button id="backToHomeBtn" class="btn-text"><i class="fa-solid fa-arrow-left"></i> Back to Home</button>
+                    <h2>Salary Tax Computation Wizard</h2>
+                    <div class="wizard-progress-bar">
+                        <div id="progressBarFill" class="progress-bar-fill" style="width: 16.6%;"></div>
+                    </div>
+                </div>
+
+                <div class="wizard-grid">
+                    <!-- Wizard Sidebar Navigation -->
+                    <div class="wizard-sidebar">
+                        <ul class="wizard-steps-list">
+                            <li class="step-item active" data-step="1">
+                                <span class="step-num">1</span>
+                                <span class="step-label">Personal details</span>
+                            </li>
+                            <li class="step-item" data-step="2">
+                                <span class="step-num">2</span>
+                                <span class="step-label">Salary Details</span>
+                            </li>
+                            <li class="step-item" data-step="3">
+                                <span class="step-num">3</span>
+                                <span class="step-label">Exempt Allowances</span>
+                            </li>
+                            <li class="step-item" data-step="4">
+                                <span class="step-num">4</span>
+                                <span class="step-label">Other Sources</span>
+                            </li>
+                            <li class="step-item" data-step="5">
+                                <span class="step-num">5</span>
+                                <span class="step-label">Old Regime Deductions</span>
+                            </li>
+                            <li class="step-item" data-step="6">
+                                <span class="step-num">6</span>
+                                <span class="step-label">New Regime Inputs</span>
+                            </li>
+                        </ul>
+
+                        <!-- Gross Salary Live Display Widget -->
+                        <div class="gross-salary-widget">
+                            <h4>Estimated Gross Salary</h4>
+                            <div class="gross-amount">Rs. <span id="liveGrossSalary">0.00</span></div>
+                            <p class="widget-note">Updates automatically as you add salary components.</p>
+                        </div>
+                    </div>
+
+                    <!-- Wizard Form Body -->
+                    <div class="wizard-body-card">
+                        <form id="taxForm" novalidate>
+                            
+                            <!-- STEP 1: PERSONAL DETAILS -->
+                            <div class="form-step-content active" data-step="1">
+                                <h3>Step 1: Personal Profile</h3>
+                                <p class="step-description">Provide basic details to establish slab categories, senior citizen rebates, and city rules.</p>
+                                
+                                <div class="form-group-row">
+                                    <div class="form-group">
+                                        <label for="name">Full Name <span class="required">*</span></label>
+                                        <input type="text" id="name" name="name" placeholder="Enter your full name" required value="Deepmala">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="age">Age <span class="required">*</span></label>
+                                        <input type="number" id="age" name="age" placeholder="Age (e.g. 35)" min="1" max="120" required value="30">
+                                    </div>
+                                </div>
+
+                                <div class="form-group-row">
+                                    <div class="form-group">
+                                        <label for="gender">Gender <span class="required">*</span></label>
+                                        <select id="gender" name="gender" required>
+                                            <option value="Female" selected>Female</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="residential_status">Residential Status <span class="required">*</span></label>
+                                        <select id="residential_status" name="residential_status" required>
+                                            <option value="Resident" selected>Resident Individual</option>
+                                            <option value="Non-Resident">Non-Resident (NRI)</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group-row">
+                                    <div class="form-group">
+                                        <label for="employment_sector">Employment Sector <span class="required">*</span></label>
+                                        <select id="employment_sector" name="employment_sector" required>
+                                            <option value="Private" selected>Private Sector Employee</option>
+                                            <option value="Central Government">Central Government</option>
+                                            <option value="State Government">State Government</option>
+                                            <option value="PSU">Public Sector Undertaking (PSU)</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="city_category">City of Residence <span class="required">*</span></label>
+                                        <select id="city_category" name="city_category" required>
+                                            <option value="Metro" selected>Metro City (Delhi, Mumbai, Kolkata, Chennai)</option>
+                                            <option value="Non-Metro">Non-Metro City</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- STEP 2: SALARY DETAILS -->
+                            <div class="form-step-content hidden" data-step="2">
+                                <h3>Step 2: Annual Salary Income</h3>
+                                <p class="step-description">Enter your annual salary components. Employee PF entered here will also be copied to Section 80C.</p>
+
+                                <div class="form-group-row">
+                                    <div class="form-group">
+                                        <label for="basic_salary">Annual Basic Salary (Rs.) <span class="required">*</span></label>
+                                        <input type="number" id="basic_salary" name="basic_salary" placeholder="e.g. 600000" min="0" required value="800000">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="dearness_allowance">Dearness Allowance (DA) (Rs.)</label>
+                                        <input type="number" id="dearness_allowance" name="dearness_allowance" placeholder="e.g. 50000" min="0" value="0">
+                                    </div>
+                                </div>
+
+                                <div class="form-group-row">
+                                    <div class="form-group">
+                                        <label for="hra_received">House Rent Allowance (HRA) Received (Annual) (Rs.)</label>
+                                        <input type="number" id="hra_received" name="hra_received" placeholder="e.g. 240000" min="0" value="320000">
+                                        <small class="help-text">Standard CTC housing component.</small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="special_allowance">Special Allowance (Rs.)</label>
+                                        <input type="number" id="special_allowance" name="special_allowance" placeholder="e.g. 120000" min="0" value="100000">
+                                    </div>
+                                </div>
+
+                                <div class="form-group-row">
+                                    <div class="form-group">
+                                        <label for="bonus">Annual Bonus / Gratuity / Ex-Gratia (Rs.)</label>
+                                        <input type="number" id="bonus" name="bonus" placeholder="e.g. 80000" min="0" value="50000">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="commission">Commission Received (Rs.)</label>
+                                        <input type="number" id="commission" name="commission" placeholder="e.g. 20000" min="0" value="0">
+                                    </div>
+                                </div>
+
+                                <div class="form-group-row">
+                                    <div class="form-group">
+                                        <label for="children_education_allowance">Children Education Allowance Received (Annual) (Rs.)</label>
+                                        <input type="number" id="children_education_allowance" name="children_education_allowance" placeholder="e.g. 2400" min="0" value="2400">
+                                        <small class="help-text">Exempt up to Rs. 100/month per child (max 2 children) in Old Regime.</small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="hostel_allowance">Hostel Allowance Received (Annual) (Rs.)</label>
+                                        <input type="number" id="hostel_allowance" name="hostel_allowance" placeholder="e.g. 7200" min="0" value="7200">
+                                        <small class="help-text">Exempt up to Rs. 300/month per child (max 2 children) in Old Regime.</small>
+                                    </div>
+                                </div>
+
+                                <div class="form-group-row">
+                                    <div class="form-group">
+                                        <label for="employee_pf">Employee PF Contribution (Rs.)</label>
+                                        <input type="number" id="employee_pf" name="employee_pf" placeholder="Auto-saves to 80C" min="0" value="96000">
+                                        <small class="help-text">Typically 12% of Basic Salary.</small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="employer_pf">Employer PF Contribution (Rs.)</label>
+                                        <input type="number" id="employer_pf" name="employer_pf" placeholder="e.g. 72000" min="0" value="96000">
+                                    </div>
+                                </div>
+
+                                <div class="form-group-row">
+                                    <div class="form-group">
+                                        <label for="gratuity">Gratuity Received (Rs.)</label>
+                                        <input type="number" id="gratuity" name="gratuity" placeholder="e.g. 100000" min="0" value="0">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="leave_encashment">Leave Encashment (Rs.)</label>
+                                        <input type="number" id="leave_encashment" name="leave_encashment" placeholder="e.g. 50000" min="0" value="0">
+                                    </div>
+                                </div>
+
+                                <div class="form-group-row">
+                                    <div class="form-group">
+                                        <label for="pension_income">Pension Income (Rs.)</label>
+                                        <input type="number" id="pension_income" name="pension_income" placeholder="e.g. 60000" min="0" value="0">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="other_salary_income">Other Salary Income (Rs.)</label>
+                                        <input type="number" id="other_salary_income" name="other_salary_income" placeholder="e.g. 30000" min="0" value="0">
+                                    </div>
+                                </div>
+
+                                <div class="form-group-row">
+                                    <div class="form-group">
+                                        <label for="other_taxable_allowances">Other Taxable Allowances (Rs.)</label>
+                                        <input type="number" id="other_taxable_allowances" name="other_taxable_allowances" placeholder="e.g. 40000" min="0" value="0">
+                                    </div>
+                                    <div class="form-group">
+                                        <!-- Keep row balanced -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- STEP 3: EXEMPT ALLOWANCES & REIMBURSEMENTS -->
+                            <div class="form-step-content hidden" data-step="3">
+                                <h3>Step 3: Exempt Allowances & Reimbursements</h3>
+                                <p class="step-description">Exemptions are deducted from Gross Salary in the <b>Old Tax Regime Only</b> (they are fully taxable in the New Regime). Enter annual values.</p>
+
+                                <div class="card-highlight mb-4">
+                                    <h4>HRA Exemption Data (Section 10(13A))</h4>
+                                    <div class="form-group-row">
+                                        <div class="form-group">
+                                            <label for="hra_received">Annual HRA Received (Rs.)</label>
+                                            <input type="number" id="hra_received" name="hra_received" placeholder="e.g. 240000" min="0" value="320000">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="rent_paid">Annual Rent Paid (Rs.)</label>
+                                            <input type="number" id="rent_paid" name="rent_paid" placeholder="e.g. 180000" min="0" value="240000">
+                                        </div>
+                                    </div>
+                                    <p class="widget-note"><i class="fa-solid fa-circle-info"></i> The system automatically computes the minimum of HRA received, Rent Paid minus 10% Basic+DA, or 50%/40% of Basic+DA depending on city.</p>
+                                </div>
+
+                                <div class="form-group-row">
+                                    <div class="form-group">
+                                        <label for="lta_received">Leave Travel Allowance (LTA) (Rs.)</label>
+                                        <input type="number" id="lta_received" name="lta_received" placeholder="e.g. 40000" min="0" value="0">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="telephone_reimbursement">Telephone Reimbursement (Rs.)</label>
+                                        <input type="number" id="telephone_reimbursement" name="telephone_reimbursement" placeholder="e.g. 12000" min="0" value="12000">
+                                    </div>
+                                </div>
+
+                                <div class="form-group-row">
+                                    <div class="form-group">
+                                        <label for="internet_reimbursement">Internet Reimbursement (Rs.)</label>
+                                        <input type="number" id="internet_reimbursement" name="internet_reimbursement" placeholder="e.g. 15000" min="0" value="12000">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="fuel_reimbursement">Fuel Reimbursement (Rs.)</label>
+                                        <input type="number" id="fuel_reimbursement" name="fuel_reimbursement" placeholder="e.g. 48000" min="0" value="0">
+                                    </div>
+                                </div>
+
+                                <div class="form-group-row">
+                                    <div class="form-group">
+                                        <label for="driver_reimbursement">Driver Salary Reimbursement (Rs.)</label>
+                                        <input type="number" id="driver_reimbursement" name="driver_reimbursement" placeholder="e.g. 120000" min="0" value="0">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="meal_coupons">Meal Coupons (Exempt Food Vouchers) (Rs.)</label>
+                                        <input type="number" id="meal_coupons" name="meal_coupons" placeholder="e.g. 26400" min="0" value="22000">
+                                    </div>
+                                </div>
+
+                                <div class="form-group-row">
+                                    <div class="form-group">
+                                        <label for="uniform_allowance">Uniform Allowance (Rs.)</label>
+                                        <input type="number" id="uniform_allowance" name="uniform_allowance" placeholder="e.g. 10000" min="0" value="0">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="books_allowance">Books & Periodicals Allowance (Rs.)</label>
+                                        <input type="number" id="books_allowance" name="books_allowance" placeholder="e.g. 15000" min="0" value="5000">
+                                    </div>
+                                </div>
+
+                                <div class="form-group-row">
+                                    <div class="form-group">
+                                        <label for="prof_dev_reimbursement">Professional Development (Rs.)</label>
+                                        <input type="number" id="prof_dev_reimbursement" name="prof_dev_reimbursement" placeholder="e.g. 25000" min="0" value="10000">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="other_exempt_reimbursements">Other Exempt Reimbursements (Rs.)</label>
+                                        <input type="number" id="other_exempt_reimbursements" name="other_exempt_reimbursements" placeholder="e.g. 20000" min="0" value="0">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- STEP 4: INCOME FROM OTHER SOURCES -->
+                            <div class="form-step-content hidden" data-step="4">
+                                <h3>Step 4: Income from Other Sources & Capital Gains</h3>
+                                <p class="step-description">Include non-salary income. Short-term and long-term capital gains on equity are computed with special tax rates (20% and 12.5% respectively).</p>
+
+                                <div class="form-group-row">
+                                    <div class="form-group">
+                                        <label for="savings_interest">Savings Account Interest (Rs.)</label>
+                                        <input type="number" id="savings_interest" name="savings_interest" placeholder="e.g. 8000" min="0" value="5000">
+                                        <small class="help-text">Deductible under 80TTA (up to 10k) or 80TTB (up to 50k).</small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="fd_interest">Fixed Deposit Interest (Rs.)</label>
+                                        <input type="number" id="fd_interest" name="fd_interest" placeholder="e.g. 45000" min="0" value="15000">
+                                    </div>
+                                </div>
+
+                                <div class="form-group-row">
+                                    <div class="form-group">
+                                        <label for="dividend_income">Dividend Income (Rs.)</label>
+                                        <input type="number" id="dividend_income" name="dividend_income" placeholder="e.g. 10000" min="0" value="0">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="rental_income">Gross Annual Rent Received (Let-Out House) (Rs.)</label>
+                                        <input type="number" id="rental_income" name="rental_income" placeholder="e.g. 120000" min="0" value="0">
+                                        <small class="help-text">30% Standard deduction is applied automatically u/s 24(a).</small>
+                                    </div>
+                                </div>
+
+                                <div class="form-group-row">
+                                    <div class="form-group">
+                                        <label for="stcg_equity">Short-Term Capital Gains (STCG - Equity) (Rs.)</label>
+                                        <input type="number" id="stcg_equity" name="stcg_equity" placeholder="e.g. 50000" min="0" value="0">
+                                        <small class="help-text">Taxed at 20% u/s 111A.</small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="ltcg_equity">Long-Term Capital Gains (LTCG - Equity) (Rs.)</label>
+                                        <input type="number" id="ltcg_equity" name="ltcg_equity" placeholder="e.g. 150000" min="0" value="0">
+                                        <small class="help-text">Taxed at 12.5% u/s 112A (first Rs. 1.25 Lakhs exempt).</small>
+                                    </div>
+                                </div>
+
+                                <div class="form-group-row">
+                                    <div class="form-group">
+                                        <label for="other_income">Any Other Taxable Income (Rs.)</label>
+                                        <input type="number" id="other_income" name="other_income" placeholder="e.g. 25000" min="0" value="0">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- STEP 5: OLD REGIME DEDUCTIONS -->
+                            <div class="form-step-content hidden" data-step="5">
+                                <h3>Step 5: Old Regime Deductions (Chapter VI-A)</h3>
+                                <p class="step-description">Enter investments and expenses that qualify for deduction under the <b>Old Tax Regime only</b>. The total eligible amount will be calculated based on individual section limits.</p>
+
+                                <div class="accordion-section mb-4">
+                                    <h4>Section 80C Investments (Max Deduction: Rs. 1.5 Lakhs)</h4>
+                                    <div class="accordion-grid">
+                                        <div class="form-group">
+                                            <label for="ppf">Public Provident Fund (PPF) (Rs.)</label>
+                                            <input type="number" id="ppf" name="ppf" placeholder="e.g. 100000" min="0" value="50000">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="elss">Equity Linked Savings (ELSS) (Rs.)</label>
+                                            <input type="number" id="elss" name="elss" placeholder="e.g. 50000" min="0" value="0">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="life_insurance">Life Insurance Premium (Rs.)</label>
+                                            <input type="number" id="life_insurance" name="life_insurance" placeholder="e.g. 25000" min="0" value="40000">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="sukanya">Sukanya Samriddhi Scheme (Rs.)</label>
+                                            <input type="number" id="sukanya" name="sukanya" placeholder="e.g. 50000" min="0" value="0">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="nsc">National Savings Certificate (NSC) (Rs.)</label>
+                                            <input type="number" id="nsc" name="nsc" placeholder="e.g. 20000" min="0" value="0">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="tax_saving_fd">Tax-Saving FD (5 Year) (Rs.)</label>
+                                            <input type="number" id="tax_saving_fd" name="tax_saving_fd" placeholder="e.g. 50000" min="0" value="0">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="home_loan_principal">Home Loan Principal Repayment (Rs.)</label>
+                                            <input type="number" id="home_loan_principal" name="home_loan_principal" placeholder="e.g. 80000" min="0" value="0">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="tuition_fees">Tuition Fees paid for children (Rs.)</label>
+                                            <input type="number" id="tuition_fees" name="tuition_fees" placeholder="e.g. 60000" min="0" value="0">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="other_80c">Other Section 80C Investments (Rs.)</label>
+                                            <input type="number" id="other_80c" name="other_80c" placeholder="e.g. 15000" min="0" value="0">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group-row">
+                                    <div class="form-group">
+                                        <label for="nps_additional_80ccd_1b">Section 80CCD(1B) NPS Additional (Rs.)</label>
+                                        <input type="number" id="nps_additional_80ccd_1b" name="nps_additional_80ccd_1b" placeholder="Max Rs. 50,000" min="0" value="50000">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="education_loan_interest">Section 80E Education Loan Interest (Rs.)</label>
+                                        <input type="number" id="education_loan_interest" name="education_loan_interest" placeholder="Actual Interest Paid" min="0" value="0">
+                                    </div>
+                                </div>
+
+                                <div class="card-highlight mb-4">
+                                    <h4>Section 80D Health Insurance Premium</h4>
+                                    <div class="form-group-row">
+                                        <div class="form-group">
+                                            <label for="health_insurance_self">Self, Spouse & Children Premium (Rs.)</label>
+                                            <input type="number" id="health_insurance_self" name="health_insurance_self" placeholder="e.g. 20000" min="0" value="15000">
+                                            <small class="help-text">Max limit: 25k (or 50k if self/spouse senior citizen).</small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="health_insurance_parents">Parents Premium (Rs.)</label>
+                                            <input type="number" id="health_insurance_parents" name="health_insurance_parents" placeholder="e.g. 35000" min="0" value="30000">
+                                        </div>
+                                    </div>
+                                    <div class="form-group-checkbox mt-2">
+                                        <input type="checkbox" id="is_parents_senior" name="is_parents_senior" checked>
+                                        <label for="is_parents_senior">Are parents Senior Citizens (Age 60+)? (Raises Parents Cap to Rs. 50,000)</label>
+                                    </div>
+                                </div>
+
+                                <div class="card-highlight mb-4">
+                                    <h4>Section 24(b) Home Loan Interest Paid</h4>
+                                    <div class="form-group-row">
+                                        <div class="form-group">
+                                            <label for="home_loan_interest_self_occupied">Self-Occupied Property Interest (Rs.)</label>
+                                            <input type="number" id="home_loan_interest_self_occupied" name="home_loan_interest_self_occupied" placeholder="e.g. 150000" min="0" value="0">
+                                            <small class="help-text">Max deduction: Rs. 2,00,000.</small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="home_loan_interest_let_out">Let-Out Property Interest (Rs.)</label>
+                                            <input type="number" id="home_loan_interest_let_out" name="home_loan_interest_let_out" placeholder="e.g. 240000" min="0" value="0">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-section">
+                                    <h4>Other Eligible Deductions</h4>
+                                    <div class="accordion-grid">
+                                        <div class="form-group">
+                                            <label for="donations_80g">Section 80G Donations (Rs.)</label>
+                                            <input type="number" id="donations_80g" name="donations_80g" placeholder="Donation Amount" min="0" value="0">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="other_deductions_80ee">Section 80EE First-Time Buyer (Rs.)</label>
+                                            <input type="number" id="other_deductions_80ee" name="other_deductions_80ee" placeholder="Max Rs. 50,000" min="0" value="0">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="other_deductions_80eea">Section 80EEA Affordable Housing (Rs.)</label>
+                                            <input type="number" id="other_deductions_80eea" name="other_deductions_80eea" placeholder="Max Rs. 1,50,000" min="0" value="0">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="other_deductions_80u">Section 80U Disability (Self) (Rs.)</label>
+                                            <input type="number" id="other_deductions_80u" name="other_deductions_80u" placeholder="e.g. 75000 or 125000" min="0" value="0">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="other_deductions_80dd">Section 80DD Disabled Dependent (Rs.)</label>
+                                            <input type="number" id="other_deductions_80dd" name="other_deductions_80dd" placeholder="e.g. 75000 or 125000" min="0" value="0">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- STEP 6: NEW REGIME INPUTS -->
+                            <div class="form-step-content hidden" data-step="6">
+                                <h3>Step 6: New Regime Slabs & Inputs</h3>
+                                <p class="step-description">Deductions and exemptions entered in previous steps are automatically disabled under the New Tax Regime as per Section 115BAC. Only specific deductions are allowed here.</p>
+
+                                <div class="alert alert-info">
+                                    <div class="alert-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                                    <div class="alert-content">
+                                        <strong>Automatic Benefits Applied:</strong> Under the New Regime, you automatically receive a <strong>Rs. 75,000 Standard Deduction</strong>. Slabs are wider, and Section 87A rebate offers zero tax on total incomes up to <strong>Rs. 12 Lakhs</strong> (which effectively becomes Rs. 12.75 Lakhs for salaried individuals).
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="employer_nps_contribution">Employer NPS Contribution u/s 80CCD(2) (Rs.)</label>
+                                    <input type="number" id="employer_nps_contribution" name="employer_nps_contribution" placeholder="e.g. 60000" min="0" value="0">
+                                    <small class="help-text">Allowed in both regimes. Capped at 14% of Basic + DA.</small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="agniveer_corpus_contribution">Agniveer Corpus Fund Contribution u/s 80CCH(2) (Rs.)</label>
+                                    <input type="number" id="agniveer_corpus_contribution" name="agniveer_corpus_contribution" placeholder="e.g. 20000" min="0" value="0">
+                                    <small class="help-text">Allowed in both regimes.</small>
+                                </div>
+
+                                <div class="card-highlight mt-4 disabled-card">
+                                    <h4>Disallowed Deductions u/s 115BAC (New Regime)</h4>
+                                    <p class="widget-note">The following items entered previously are not permitted under the New Regime and will be excluded from the New Regime taxable income calculation:</p>
+                                    <div class="disallowed-grid">
+                                        <div class="disallowed-item"><i class="fa-solid fa-circle-xmark"></i> Section 80C (PPF/EPF/FD)</div>
+                                        <div class="disallowed-item"><i class="fa-solid fa-circle-xmark"></i> Section 80D (Health Insurance)</div>
+                                        <div class="disallowed-item"><i class="fa-solid fa-circle-xmark"></i> Section 24(b) (Home Loan Interest)</div>
+                                        <div class="disallowed-item"><i class="fa-solid fa-circle-xmark"></i> Section 10(13A) (HRA Exemption)</div>
+                                        <div class="disallowed-item"><i class="fa-solid fa-circle-xmark"></i> Section 80CCD(1B) (NPS)</div>
+                                        <div class="disallowed-item"><i class="fa-solid fa-circle-xmark"></i> Section 80TTA/80TTB (Interest)</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Form Navigation Buttons -->
+                            <div class="wizard-footer-buttons">
+                                <button type="button" id="prevStepBtn" class="btn btn-secondary hidden"><i class="fa-solid fa-chevron-left"></i> Previous</button>
+                                <button type="button" id="nextStepBtn" class="btn btn-primary">Next <i class="fa-solid fa-chevron-right"></i></button>
+                                <button type="submit" id="calculateTaxBtn" class="btn btn-success hidden"><i class="fa-solid fa-circle-check"></i> Calculate Tax</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- SECTION 3: COMPARISON DASHBOARD -->
+        <section id="resultsSection" class="results-section hidden">
+            <div class="container">
+                <div class="dashboard-header">
+                    <h2>Tax Optimization & Regime Comparison Dashboard</h2>
+                    <div class="dashboard-actions">
+                        <button id="recalculateBtn" class="btn btn-secondary"><i class="fa-solid fa-rotate-left"></i> Edit Inputs</button>
+                        <button id="downloadPdfBtn" class="btn btn-primary"><i class="fa-solid fa-file-pdf"></i> Download PDF Report</button>
+                        <button id="printReportBtn" class="btn btn-secondary"><i class="fa-solid fa-print"></i> Print</button>
+                    </div>
+                </div>
+
+                <!-- Recommendation Banner -->
+                <div id="recommendationBanner" class="recommendation-banner">
+                    <div class="recommendation-icon"><i class="fa-solid fa-award"></i></div>
+                    <div class="recommendation-text-block">
+                        <h3 id="recommendationTitle">Recommended Regime: New Tax Regime</h3>
+                        <p id="recommendationDesc">You can save up to Rs. 42,000 by opting for the New Tax Regime.</p>
+                    </div>
+                </div>
+
+                <!-- Compliance Notice -->
+                <div class="info-card mb-4">
+                    <div class="info-card-icon"><i class="fa-solid fa-circle-exclamation"></i></div>
+                    <div class="info-card-content">
+                        <h4>Important Notice</h4>
+                        <ul>
+                            <li>This tool is not affiliated with the Indian Income Tax Department.</li>
+                            <li>Results are estimates based on the tax rules configured in the application for FY 2026-27 (AY 2027-28).</li>
+                            <li>Users are responsible for verifying the final tax liability before filing returns.</li>
+                            <li>Built by Deepmala of Sweco India for learning purposes and personal use only.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Key Metrics Grid -->
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <span class="metric-label">Gross Income</span>
+                        <h3 id="metricGrossSalary">Rs. 0.00</h3>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-label">Taxable Income (Old)</span>
+                        <h3 id="metricOldTaxable">Rs. 0.00</h3>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-label">Taxable Income (New)</span>
+                        <h3 id="metricNewTaxable">Rs. 0.00</h3>
+                    </div>
+                    <div class="metric-card highlight-metric">
+                        <span class="metric-label">Tax Saved</span>
+                        <h3 id="metricTaxSaved">Rs. 0.00</h3>
+                        <span id="metricPercentSaved" class="metric-sublabel">0% Savings</span>
+                    </div>
+                    <div class="metric-card tax-card-old">
+                        <span class="metric-label">Tax Payable (Old Regime)</span>
+                        <h3 id="metricOldTaxPayable">Rs. 0.00</h3>
+                    </div>
+                    <div class="metric-card tax-card-new">
+                        <span class="metric-label">Tax Payable (New Regime)</span>
+                        <h3 id="metricNewTaxPayable">Rs. 0.00</h3>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="charts-grid mt-4">
+                    <div class="chart-card">
+                        <h3>Tax Liability Comparison</h3>
+                        <div class="chart-container">
+                            <canvas id="taxComparisonChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Deductions & Exemptions Breakup (Old)</h3>
+                        <div class="chart-container">
+                            <canvas id="deductionsBreakupChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-card full-width-chart mt-4">
+                    <h3>Tax Liability Projection across Income Levels</h3>
+                    <div class="chart-container line-chart-container">
+                        <canvas id="taxProjectionChart"></canvas>
+                    </div>
+                    <p class="chart-caption">Note: This projection is based on your current set of deductions and exemptions compared across gross salaries from Rs. 0 to Rs. 30 Lakhs.</p>
+                </div>
+
+                <!-- Detailed Breakdown Table -->
+                <div class="breakdown-card mt-4">
+                    <h3>Detailed Breakdown side-by-side</h3>
+                    <div class="table-responsive">
+                        <table class="breakdown-table">
+                            <thead>
+                                <tr>
+                                    <th>Income Tax Calculation Component</th>
+                                    <th>Old Tax Regime (Rs.)</th>
+                                    <th>New Tax Regime (Rs.)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="breakdownTableBody">
+                                <!-- Filled by JS dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER & BRANDING -->
+        <footer class="app-footer">
+            <div class="footer-branding">
+                <p><strong>Built by Deepmala of Sweco India</strong></p>
+                <p>For Learning Purpose and Personal Use Only</p>
+            </div>
+            <div class="footer-disclaimer">
+                <p><strong>Disclaimer:</strong> This application is built by Deepmala of Sweco India for learning purposes and personal use only. The calculations provided are for informational and educational purposes and should not be considered professional tax, legal, or financial advice. Users are advised to consult a qualified tax professional or refer to official Income Tax Department guidelines before making financial decisions.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Spinner Modal overlay -->
+    <div id="loadingOverlay" class="loading-overlay hidden">
+        <div class="spinner-container">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+            <p>Computing optimal tax liabilities...</p>
+        </div>
+    </div>
+
+    <!-- Error/Notification Banner -->
+    <div id="notificationBanner" class="notification-toast hidden">
+        <div class="notification-content">
+            <span class="notification-icon"><i class="fa-solid fa-circle-exclamation"></i></span>
+            <span id="notificationMessage" class="notification-text">An error occurred.</span>
+        </div>
+        <button id="closeNotificationBtn" class="notification-close"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <!-- Script File -->
+    <script src="script.js"></script>
+</body>
+</html>
