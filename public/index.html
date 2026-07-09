@@ -306,6 +306,7 @@
                                     <div class="form-group">
                                         <label for="employer_pf">Employer PF Contribution (Rs.)</label>
                                         <input type="number" id="employer_pf" name="employer_pf" placeholder="e.g. 72000" min="0" value="96000">
+                                        <small class="help-text">Tax-exempt unless combined with Employer NPS + Superannuation it exceeds Rs. 7,50,000/year (u/s 17(2)(vii)).</small>
                                     </div>
                                 </div>
 
@@ -603,6 +604,12 @@
                                     <label for="employer_nps_contribution">Employer NPS Contribution u/s 80CCD(2) (Rs.)</label>
                                     <input type="number" id="employer_nps_contribution" name="employer_nps_contribution" placeholder="e.g. 60000" min="0" value="0">
                                     <small class="help-text">Allowed in both regimes. Capped at 14% of Basic + DA.</small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="employer_superannuation_contribution">Employer Superannuation Fund Contribution (Rs.)</label>
+                                    <input type="number" id="employer_superannuation_contribution" name="employer_superannuation_contribution" placeholder="e.g. 0" min="0" value="0">
+                                    <small class="help-text">Combined with Employer PF + NPS above, amounts exceeding Rs. 7,50,000/year in total are taxable u/s 17(2)(vii), in both regimes.</small>
                                 </div>
 
                                 <div class="form-group">

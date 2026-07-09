@@ -243,13 +243,21 @@ def run_calculation(data):
     
     # New Regime Inputs
     employer_nps_contribution = float(data.get('employer_nps_contribution', 0.0))
+    employer_superannuation_contribution = float(data.get('employer_superannuation_contribution', 0.0))
     agniveer_corpus = float(data.get('agniveer_corpus_contribution', 0.0))
+
+    # Sec 17(2)(vii): employer contributions to PF + NPS + superannuation fund are
+    # tax-exempt in aggregate up to Rs 7,50,000/year; only the combined excess is a
+    # taxable salary perquisite (applies under both regimes - not a regime-specific exemption).
+    combined_employer_retirement_contribution = (employer_pf + employer_nps_contribution +
+                                                  employer_superannuation_contribution)
+    excess_employer_retirement_contribution = max(0.0, combined_employer_retirement_contribution - 750000.0)
 
     # --- Calculations ---
     # Gross Salary components input by user (including HRA received and new allowances)
-    gross_salary = (basic + da + bonus + commission + special_allowance + 
-                    other_taxable_allowances + employer_pf + gratuity + 
-                    leave_encashment + pension + other_salary + 
+    gross_salary = (basic + da + bonus + commission + special_allowance +
+                    other_taxable_allowances + excess_employer_retirement_contribution + gratuity +
+                    leave_encashment + pension + other_salary +
                     hra_received + children_education_allowance + hostel_allowance)
     
     # ---------------- OLD REGIME COMPUTATION ----------------
@@ -593,6 +601,7 @@ def run_calculation(data):
       },
       "summary": {
         "gross_salary": gross_salary,
+        "employer_retirement_contribution_excess": excess_employer_retirement_contribution,
         "old_taxable_income": old_total_income,
         "new_taxable_income": new_total_income,
         "old_tax_payable": old_final_tax,
