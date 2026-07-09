@@ -30,9 +30,9 @@
         <header id="landingSection" class="landing-section">
             <div class="hero-container">
                 <div class="hero-content animate-fade-in">
-                    <span class="badge">FY 2026-27 (AY 2027-28)</span>
+                    <span class="badge">Tax Year 2026-27</span>
                     <h1>India Salary Tax Planner <span class="highlight">2026-27</span></h1>
-                    <p class="subtitle">Compare Old vs New Tax Regimes instantly with Section 87A Marginal Relief & optimize your deductions to save maximum tax.</p>
+                    <p class="subtitle">Compare Old vs New Tax Regimes instantly with Marginal Tax Relief & optimize your deductions to save maximum tax.</p>
                     <div class="hero-actions">
                         <button id="startCalcBtn" class="btn btn-primary btn-lg">
                             <i class="fa-solid fa-calculator"></i> Calculate My Tax
@@ -48,17 +48,17 @@
                     <div class="feature-card">
                         <div class="feature-icon"><i class="fa-solid fa-scale-balanced"></i></div>
                         <h3>Regime Comparison</h3>
-                        <p>Instant, precise comparison between Old and New regimes for FY 2026-27 side-by-side.</p>
+                        <p>Instant, precise comparison between Old and New regimes for Tax Year 2026-27 side-by-side.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon"><i class="fa-solid fa-chart-pie"></i></div>
                         <h3>Deduction Optimization</h3>
-                        <p>Analyze how 80C, 80D, 80CCD(1B), and Section 24(b) lower your taxable income.</p>
+                        <p>Analyze how your investments, health insurance, additional NPS, and home loan interest lower your taxable income.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon"><i class="fa-solid fa-house-chimney"></i></div>
                         <h3>HRA Exemption Calculator</h3>
-                        <p>Auto-computes Section 10(13A) exemptions based on Metro/Non-Metro basic and rent details.</p>
+                        <p>Auto-computes HRA exemptions based on Metro/Non-Metro basic and rent details.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon"><i class="fa-solid fa-file-pdf"></i></div>
@@ -67,7 +67,7 @@
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                        <h3>87A Marginal Relief</h3>
+                        <h3>Marginal Tax Relief</h3>
                         <p>Accurately incorporates new rules preventing tax cliffs when net income exceeds Rs. 12 Lakhs.</p>
                     </div>
                     <div class="feature-card">
@@ -249,7 +249,7 @@
                             <!-- STEP 2: SALARY DETAILS -->
                             <div class="form-step-content hidden" data-step="2">
                                 <h3>Step 2: Annual Salary Income</h3>
-                                <p class="step-description">Enter your annual salary components. Employee PF entered here will also be copied to Section 80C.</p>
+                                <p class="step-description">Enter your annual salary components. Employee PF entered here will also be copied to the Investment Deductions section.</p>
 
                                 <div class="form-group-row">
                                     <div class="form-group">
@@ -305,7 +305,7 @@
                                     <div class="form-group">
                                         <label for="employer_pf">Employer PF Contribution (Rs.)</label>
                                         <input type="number" id="employer_pf" name="employer_pf" placeholder="e.g. 72000" min="0" value="96000">
-                                        <small class="help-text">Tax-exempt unless combined with Employer NPS + Superannuation it exceeds Rs. 7,50,000/year (u/s 17(2)(vii)).</small>
+                                        <small class="help-text">Tax-exempt unless combined with Employer NPS + Superannuation it exceeds Rs. 7,50,000/year.</small>
                                     </div>
                                 </div>
 
@@ -348,7 +348,7 @@
                                 <p class="step-description">Exemptions are deducted from Gross Salary in the <b>Old Tax Regime Only</b> (they are fully taxable in the New Regime). Enter annual values.</p>
 
                                 <div class="card-highlight mb-4">
-                                    <h4>HRA Exemption Data (Section 10(13A))</h4>
+                                    <h4>HRA Exemption Data</h4>
                                     <div class="form-group-row">
                                         <div class="form-group">
                                             <label for="hra_received">Annual HRA Received (Rs.)</label>
@@ -427,7 +427,7 @@
                                     <div class="form-group">
                                         <label for="savings_interest">Savings Account Interest (Rs.)</label>
                                         <input type="number" id="savings_interest" name="savings_interest" placeholder="e.g. 8000" min="0" value="5000">
-                                        <small class="help-text">Deductible under 80TTA (up to 10k) or 80TTB (up to 50k).</small>
+                                        <small class="help-text">Deductible up to Rs. 10,000 (under age 60) or Rs. 50,000 (senior citizens).</small>
                                     </div>
                                     <div class="form-group">
                                         <label for="fd_interest">Fixed Deposit Interest (Rs.)</label>
@@ -443,7 +443,7 @@
                                     <div class="form-group">
                                         <label for="rental_income">Gross Annual Rent Received (Let-Out House) (Rs.)</label>
                                         <input type="number" id="rental_income" name="rental_income" placeholder="e.g. 120000" min="0" value="0">
-                                        <small class="help-text">30% Standard deduction is applied automatically u/s 24(a).</small>
+                                        <small class="help-text">30% Standard deduction is applied automatically.</small>
                                     </div>
                                 </div>
 
@@ -451,12 +451,12 @@
                                     <div class="form-group">
                                         <label for="stcg_equity">Short-Term Capital Gains (STCG - Equity) (Rs.)</label>
                                         <input type="number" id="stcg_equity" name="stcg_equity" placeholder="e.g. 50000" min="0" value="0">
-                                        <small class="help-text">Taxed at 20% u/s 111A.</small>
+                                        <small class="help-text">Taxed at 20% (Short-Term Capital Gains on equity).</small>
                                     </div>
                                     <div class="form-group">
                                         <label for="ltcg_equity">Long-Term Capital Gains (LTCG - Equity) (Rs.)</label>
                                         <input type="number" id="ltcg_equity" name="ltcg_equity" placeholder="e.g. 150000" min="0" value="0">
-                                        <small class="help-text">Taxed at 12.5% u/s 112A (first Rs. 1.25 Lakhs exempt).</small>
+                                        <small class="help-text">Taxed at 12.5% (Long-Term Capital Gains on equity, first Rs. 1.25 Lakhs exempt).</small>
                                     </div>
                                 </div>
 
@@ -474,7 +474,7 @@
                                 <p class="step-description">Enter investments and expenses that qualify for deduction under the <b>Old Tax Regime only</b>. The total eligible amount will be calculated based on individual section limits.</p>
 
                                 <div class="accordion-section mb-4">
-                                    <h4>Section 80C Investments (Max Deduction: Rs. 1.5 Lakhs)</h4>
+                                    <h4>Investment Deductions (Max Deduction: Rs. 1.5 Lakhs)</h4>
                                     <div class="accordion-grid">
                                         <div class="form-group">
                                             <label for="ppf">Public Provident Fund (PPF) (Rs.)</label>
@@ -509,7 +509,7 @@
                                             <input type="number" id="tuition_fees" name="tuition_fees" placeholder="e.g. 60000" min="0" value="0">
                                         </div>
                                         <div class="form-group">
-                                            <label for="other_80c">Other Section 80C Investments (Rs.)</label>
+                                            <label for="other_80c">Other Eligible Investments (Rs.)</label>
                                             <input type="number" id="other_80c" name="other_80c" placeholder="e.g. 15000" min="0" value="0">
                                         </div>
                                     </div>
@@ -517,17 +517,17 @@
 
                                 <div class="form-group-row">
                                     <div class="form-group">
-                                        <label for="nps_additional_80ccd_1b">Section 80CCD(1B) NPS Additional (Rs.)</label>
+                                        <label for="nps_additional_80ccd_1b">Additional NPS Contribution (Self) (Rs.)</label>
                                         <input type="number" id="nps_additional_80ccd_1b" name="nps_additional_80ccd_1b" placeholder="Max Rs. 50,000" min="0" value="50000">
                                     </div>
                                     <div class="form-group">
-                                        <label for="education_loan_interest">Section 80E Education Loan Interest (Rs.)</label>
+                                        <label for="education_loan_interest">Education Loan Interest (Rs.)</label>
                                         <input type="number" id="education_loan_interest" name="education_loan_interest" placeholder="Actual Interest Paid" min="0" value="0">
                                     </div>
                                 </div>
 
                                 <div class="card-highlight mb-4">
-                                    <h4>Section 80D Health Insurance Premium</h4>
+                                    <h4>Health Insurance Premium</h4>
                                     <div class="form-group-row">
                                         <div class="form-group">
                                             <label for="health_insurance_self">Self, Spouse & Children Premium (Rs.)</label>
@@ -546,7 +546,7 @@
                                 </div>
 
                                 <div class="card-highlight mb-4">
-                                    <h4>Section 24(b) Home Loan Interest Paid</h4>
+                                    <h4>Home Loan Interest Paid</h4>
                                     <div class="form-group-row">
                                         <div class="form-group">
                                             <label for="home_loan_interest_self_occupied">Self-Occupied Property Interest (Rs.)</label>
@@ -564,23 +564,23 @@
                                     <h4>Other Eligible Deductions</h4>
                                     <div class="accordion-grid">
                                         <div class="form-group">
-                                            <label for="donations_80g">Section 80G Donations (Rs.)</label>
+                                            <label for="donations_80g">Donations (Rs.)</label>
                                             <input type="number" id="donations_80g" name="donations_80g" placeholder="Donation Amount" min="0" value="0">
                                         </div>
                                         <div class="form-group">
-                                            <label for="other_deductions_80ee">Section 80EE First-Time Buyer (Rs.)</label>
+                                            <label for="other_deductions_80ee">First-Time Home Buyer Interest (Rs.)</label>
                                             <input type="number" id="other_deductions_80ee" name="other_deductions_80ee" placeholder="Max Rs. 50,000" min="0" value="0">
                                         </div>
                                         <div class="form-group">
-                                            <label for="other_deductions_80eea">Section 80EEA Affordable Housing (Rs.)</label>
+                                            <label for="other_deductions_80eea">Affordable Housing Loan Interest (Rs.)</label>
                                             <input type="number" id="other_deductions_80eea" name="other_deductions_80eea" placeholder="Max Rs. 1,50,000" min="0" value="0">
                                         </div>
                                         <div class="form-group">
-                                            <label for="other_deductions_80u">Section 80U Disability (Self) (Rs.)</label>
+                                            <label for="other_deductions_80u">Disability Deduction (Self) (Rs.)</label>
                                             <input type="number" id="other_deductions_80u" name="other_deductions_80u" placeholder="e.g. 75000 or 125000" min="0" value="0">
                                         </div>
                                         <div class="form-group">
-                                            <label for="other_deductions_80dd">Section 80DD Disabled Dependent (Rs.)</label>
+                                            <label for="other_deductions_80dd">Disabled Dependent Maintenance (Rs.)</label>
                                             <input type="number" id="other_deductions_80dd" name="other_deductions_80dd" placeholder="e.g. 75000 or 125000" min="0" value="0">
                                         </div>
                                     </div>
@@ -590,17 +590,17 @@
                             <!-- STEP 6: NEW REGIME INPUTS -->
                             <div class="form-step-content hidden" data-step="6">
                                 <h3>Step 6: New Regime Slabs & Inputs</h3>
-                                <p class="step-description">Deductions and exemptions entered in previous steps are automatically disabled under the New Tax Regime as per Section 115BAC. Only specific deductions are allowed here.</p>
+                                <p class="step-description">Deductions and exemptions entered in previous steps are automatically disabled under the New Tax Regime. Only specific deductions are allowed here.</p>
 
                                 <div class="alert alert-info">
                                     <div class="alert-icon"><i class="fa-solid fa-lightbulb"></i></div>
                                     <div class="alert-content">
-                                        <strong>Automatic Benefits Applied:</strong> Under the New Regime, you automatically receive a <strong>Rs. 75,000 Standard Deduction</strong>. Slabs are wider, and Section 87A rebate offers zero tax on total incomes up to <strong>Rs. 12 Lakhs</strong> (which effectively becomes Rs. 12.75 Lakhs for salaried individuals).
+                                        <strong>Automatic Benefits Applied:</strong> Under the New Regime, you automatically receive a <strong>Rs. 75,000 Standard Deduction</strong>. Slabs are wider, and the tax rebate offers zero tax on total incomes up to <strong>Rs. 12 Lakhs</strong> (which effectively becomes Rs. 12.75 Lakhs for salaried individuals).
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="employer_nps_contribution">Employer NPS Contribution u/s 80CCD(2) (Rs.)</label>
+                                    <label for="employer_nps_contribution">Employer NPS Contribution (Rs.)</label>
                                     <input type="number" id="employer_nps_contribution" name="employer_nps_contribution" placeholder="e.g. 60000" min="0" value="0">
                                     <small class="help-text">Allowed in both regimes. Capped at 14% of Basic + DA.</small>
                                 </div>
@@ -608,25 +608,25 @@
                                 <div class="form-group">
                                     <label for="employer_superannuation_contribution">Employer Superannuation Fund Contribution (Rs.)</label>
                                     <input type="number" id="employer_superannuation_contribution" name="employer_superannuation_contribution" placeholder="e.g. 0" min="0" value="0">
-                                    <small class="help-text">Combined with Employer PF + NPS above, amounts exceeding Rs. 7,50,000/year in total are taxable u/s 17(2)(vii), in both regimes.</small>
+                                    <small class="help-text">Combined with Employer PF + NPS above, amounts exceeding Rs. 7,50,000/year in total are taxable as salary income, in both regimes.</small>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="agniveer_corpus_contribution">Agniveer Corpus Fund Contribution u/s 80CCH(2) (Rs.)</label>
+                                    <label for="agniveer_corpus_contribution">Agniveer Corpus Fund Contribution (Rs.)</label>
                                     <input type="number" id="agniveer_corpus_contribution" name="agniveer_corpus_contribution" placeholder="e.g. 20000" min="0" value="0">
                                     <small class="help-text">Allowed in both regimes.</small>
                                 </div>
 
                                 <div class="card-highlight mt-4 disabled-card">
-                                    <h4>Disallowed Deductions u/s 115BAC (New Regime)</h4>
+                                    <h4>Disallowed Deductions (New Regime)</h4>
                                     <p class="widget-note">The following items entered previously are not permitted under the New Regime and will be excluded from the New Regime taxable income calculation:</p>
                                     <div class="disallowed-grid">
-                                        <div class="disallowed-item"><i class="fa-solid fa-circle-xmark"></i> Section 80C (PPF/EPF/FD)</div>
-                                        <div class="disallowed-item"><i class="fa-solid fa-circle-xmark"></i> Section 80D (Health Insurance)</div>
-                                        <div class="disallowed-item"><i class="fa-solid fa-circle-xmark"></i> Section 24(b) (Home Loan Interest)</div>
-                                        <div class="disallowed-item"><i class="fa-solid fa-circle-xmark"></i> Section 10(13A) (HRA Exemption)</div>
-                                        <div class="disallowed-item"><i class="fa-solid fa-circle-xmark"></i> Section 80CCD(1B) (NPS)</div>
-                                        <div class="disallowed-item"><i class="fa-solid fa-circle-xmark"></i> Section 80TTA/80TTB (Interest)</div>
+                                        <div class="disallowed-item"><i class="fa-solid fa-circle-xmark"></i> Investment Deductions (PPF/EPF/FD)</div>
+                                        <div class="disallowed-item"><i class="fa-solid fa-circle-xmark"></i> Health Insurance Premium</div>
+                                        <div class="disallowed-item"><i class="fa-solid fa-circle-xmark"></i> Home Loan Interest</div>
+                                        <div class="disallowed-item"><i class="fa-solid fa-circle-xmark"></i> HRA Exemption</div>
+                                        <div class="disallowed-item"><i class="fa-solid fa-circle-xmark"></i> Additional NPS Contribution</div>
+                                        <div class="disallowed-item"><i class="fa-solid fa-circle-xmark"></i> Savings/Deposit Interest Deduction</div>
                                     </div>
                                 </div>
                             </div>
@@ -671,7 +671,7 @@
                         <h4>Important Notice</h4>
                         <ul>
                             <li>This tool is not affiliated with the Indian Income Tax Department.</li>
-                            <li>Results are estimates based on the tax rules configured in the application for FY 2026-27 (AY 2027-28).</li>
+                            <li>Results are estimates based on the tax rules configured in the application for Tax Year 2026-27.</li>
                             <li>Users are responsible for verifying the final tax liability before filing returns.</li>
                             <li>Built by Deepmala of Sweco India for learning purposes and personal use only.</li>
                         </ul>

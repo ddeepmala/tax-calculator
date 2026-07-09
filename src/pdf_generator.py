@@ -152,7 +152,7 @@ def generate_tax_report_pdf(calc_result, output_path):
     
     # 1. Header
     story.append(Paragraph("India Salary Tax Planner FY 2026-27", title_style))
-    story.append(Paragraph("Personalized Tax Computation and Regime Optimization Report (AY 2027-28)", subtitle_style))
+    story.append(Paragraph("Personalized Tax Computation and Regime Optimization Report (Tax Year 2026-27)", subtitle_style))
     
     # 2. Personal & Summary Info
     p = calc_result['personal_details']
@@ -231,22 +231,22 @@ def generate_tax_report_pdf(calc_result, output_path):
         ],
         # Exemptions
         [
-            Paragraph("HRA Exemption u/s 10(13A)", table_cell_style),
+            Paragraph("HRA Exemption", table_cell_style),
             Paragraph(f"{old_br['hra_exemption']:,.2f}", table_cell_right),
             Paragraph("Not Allowed", table_cell_right)
         ],
         [
-            Paragraph("Children Education Exemption u/s 10(14)", table_cell_style),
+            Paragraph("Children Education Exemption", table_cell_style),
             Paragraph(f"{old_br['children_education_exemption']:,.2f}", table_cell_right),
             Paragraph("Not Allowed", table_cell_right)
         ],
         [
-            Paragraph("Hostel Allowance Exemption u/s 10(14)", table_cell_style),
+            Paragraph("Hostel Allowance Exemption", table_cell_style),
             Paragraph(f"{old_br['hostel_exemption']:,.2f}", table_cell_right),
             Paragraph("Not Allowed", table_cell_right)
         ],
         [
-            Paragraph("LTA Exemption u/s 10(5)", table_cell_style),
+            Paragraph("LTA Exemption", table_cell_style),
             Paragraph(f"{old_br['lta_exemption']:,.2f}", table_cell_right),
             Paragraph("Not Allowed", table_cell_right)
         ],
@@ -257,12 +257,12 @@ def generate_tax_report_pdf(calc_result, output_path):
         ],
         # Deductions
         [
-            Paragraph("Standard Deduction u/s 16(ia)", table_cell_style),
+            Paragraph("Standard Deduction", table_cell_style),
             Paragraph(f"{old_br['standard_deduction']:,.2f}", table_cell_right),
             Paragraph(f"{new_br['standard_deduction']:,.2f}", table_cell_right)
         ],
         [
-            Paragraph("Professional Tax u/s 16(iii)", table_cell_style),
+            Paragraph("Professional Tax", table_cell_style),
             Paragraph(f"{old_br['professional_tax']:,.2f}", table_cell_right),
             Paragraph("Not Allowed", table_cell_right)
         ],
@@ -286,32 +286,32 @@ def generate_tax_report_pdf(calc_result, output_path):
         ],
         # Deductions (Chapter VI-A)
         [
-            Paragraph("Section 80C Deductions (PF, PPF, ELSS, etc.)", table_cell_style),
+            Paragraph("Investment Deductions (PF, PPF, ELSS, etc.)", table_cell_style),
             Paragraph(f"{old_br['deductions']['sec_80c']:,.2f}", table_cell_right),
             Paragraph("Not Allowed", table_cell_right)
         ],
         [
-            Paragraph("Section 80CCD(1B) (Additional NPS)", table_cell_style),
+            Paragraph("Additional NPS Contribution", table_cell_style),
             Paragraph(f"{old_br['deductions']['sec_80ccd_1b']:,.2f}", table_cell_right),
             Paragraph("Not Allowed", table_cell_right)
         ],
         [
-            Paragraph("Section 80D (Health Insurance)", table_cell_style),
+            Paragraph("Health Insurance Premium", table_cell_style),
             Paragraph(f"{old_br['deductions']['sec_80d']:,.2f}", table_cell_right),
             Paragraph("Not Allowed", table_cell_right)
         ],
         [
-            Paragraph("Section 80TTA / 80TTB (Interest Deduction)", table_cell_style),
+            Paragraph("Savings/Deposit Interest Deduction", table_cell_style),
             Paragraph(f"{old_br['deductions']['interest_deduction']:,.2f}", table_cell_right),
             Paragraph("Not Allowed", table_cell_right)
         ],
         [
-            Paragraph("Employer NPS Contribution u/s 80CCD(2)", table_cell_style),
+            Paragraph("Employer NPS Contribution", table_cell_style),
             Paragraph(f"{old_br['deductions']['sec_80ccd_2_employer']:,.2f}", table_cell_right),
             Paragraph(f"{new_br['deductions']['sec_80ccd_2_employer']:,.2f}", table_cell_right)
         ],
         [
-            Paragraph("Other Deductions (80E, 80G, 80U, etc.)", table_cell_style),
+            Paragraph("Other Deductions (education loan, donations, disability, etc.)", table_cell_style),
             Paragraph(f"{(old_br['deductions']['sec_80e'] + old_br['deductions']['sec_80g'] + old_br['deductions']['sec_80ee'] + old_br['deductions']['sec_80eea'] + old_br['deductions']['sec_80u'] + old_br['deductions']['sec_80dd']):,.2f}", table_cell_right),
             Paragraph(f"{new_br['deductions']['sec_80cch_agniveer']:,.2f}", table_cell_right)
         ],
@@ -351,15 +351,15 @@ def generate_tax_report_pdf(calc_result, output_path):
             Paragraph(f"{old_br['tax_before_rebate']:,.2f}", table_cell_right),
             Paragraph(f"{new_br['tax_before_rebate']:,.2f}", table_cell_right)
         ],
-        # Section 87A rebate
+        # Tax rebate
         [
-            Paragraph("Tax Rebate u/s 87A (K)", table_cell_style),
+            Paragraph("Tax Rebate (K)", table_cell_style),
             Paragraph(f"- {old_br['sec_87a_rebate']:,.2f}", table_cell_right),
             Paragraph(f"- {new_br['sec_87a_rebate']:,.2f}", table_cell_right)
         ],
-        # Section 87A marginal relief
+        # Marginal relief
         [
-            Paragraph("Marginal Relief u/s 87A (L)", table_cell_style),
+            Paragraph("Marginal Relief (L)", table_cell_style),
             Paragraph("0.00", table_cell_right),
             Paragraph(f"- {new_br['sec_87a_marginal_relief']:,.2f}", table_cell_right)
         ],
