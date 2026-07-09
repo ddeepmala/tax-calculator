@@ -179,8 +179,19 @@
                                     <div class="form-group">
                                         <label for="city_category">City of Residence <span class="required">*</span></label>
                                         <select id="city_category" name="city_category" required>
-                                            <option value="Metro" selected>Metro City (Delhi, Mumbai, Kolkata, Chennai)</option>
-                                            <option value="Non-Metro">Non-Metro City</option>
+                                            <optgroup label="Metro (50% HRA limit)">
+                                                <option value="Metro" selected>Delhi</option>
+                                                <option value="Metro">Mumbai</option>
+                                                <option value="Metro">Kolkata</option>
+                                                <option value="Metro">Chennai</option>
+                                            </optgroup>
+                                            <optgroup label="Non-Metro (40% HRA limit)">
+                                                <option value="Non-Metro">Bangalore</option>
+                                                <option value="Non-Metro">Pune</option>
+                                                <option value="Non-Metro">Hyderabad</option>
+                                                <option value="Non-Metro">Ahmedabad</option>
+                                                <option value="Non-Metro">Other City</option>
+                                            </optgroup>
                                         </select>
                                     </div>
                                 </div>
