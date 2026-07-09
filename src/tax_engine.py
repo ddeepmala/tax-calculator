@@ -28,6 +28,40 @@ def calculate_hra_exemption(basic, da, hra_received, rent_paid, is_metro):
     
     return float(min(limit_1, limit_2, limit_3))
 
+def calculate_professional_tax(gross_salary, state, gender):
+    """
+    Calculate annual Professional Tax u/s 16(iii) based on state-specific
+    slabs (a state levy under Article 276, capped at Rs 2,500/year -
+    NOT prescribed by the Income Tax Act itself).
+    """
+    pt_config = TAX_CONFIG.get('professional_tax', {})
+    states = pt_config.get('states', {})
+    no_pt_states = pt_config.get('no_pt_states', [])
+
+    if state in no_pt_states or state not in states:
+        return 0.0
+
+    state_config = states[state]
+    basis = state_config['basis']
+
+    if basis == 'monthly':
+        comparison_salary = gross_salary / 12.0
+    elif basis == 'half_yearly':
+        comparison_salary = gross_salary / 2.0
+    else:  # annual
+        comparison_salary = gross_salary
+
+    if 'brackets_male' in state_config:
+        brackets = state_config['brackets_female'] if gender == 'Female' else state_config['brackets_male']
+    else:
+        brackets = state_config['brackets']
+
+    for bracket in brackets:
+        if bracket['upto'] is None or comparison_salary <= bracket['upto']:
+            return float(bracket['annual_tax'])
+
+    return float(brackets[-1]['annual_tax'])
+
 def calculate_slab_tax(income, slabs):
     """
     Calculate progressive slab tax.
@@ -139,6 +173,7 @@ def run_calculation(data):
     employment_sector = data.get('employment_sector', 'Private')
     city_category = data.get('city_category', 'Metro')
     is_metro = (city_category == 'Metro')
+    state = data.get('state', 'Delhi')
     is_resident = (residential_status == 'Resident')
     
     # Salary Heads
@@ -230,8 +265,8 @@ def run_calculation(data):
                              meal_coupons + uniform_allow + books_allow + prof_dev + 
                              other_exempt)
     
-    # Standard deduction & professional tax (PT is capped at 2500 by default if salary is high enough)
-    pt_deduction = 2500.0 if gross_salary > 150000 else 0.0
+    # Standard deduction & professional tax (state levy u/s 16(iii), capped at Rs 2,500/year)
+    pt_deduction = calculate_professional_tax(gross_salary, state, gender)
     old_std_deduction = float(TAX_CONFIG['old_regime']['standard_deduction'])
     
     # Net Salary (Old)
@@ -553,7 +588,8 @@ def run_calculation(data):
         "gender": gender,
         "residential_status": residential_status,
         "employment_sector": employment_sector,
-        "city_category": city_category
+        "city_category": city_category,
+        "state": state
       },
       "summary": {
         "gross_salary": gross_salary,

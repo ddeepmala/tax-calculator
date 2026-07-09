@@ -83,5 +83,230 @@
     },
     "sec_80ee": 50000,
     "sec_80eea": 150000
+  },
+  "professional_tax": {
+    "_source_note": "State PT rates under Article 276 (max Rs 2,500/yr), NOT the Income Tax Act. 'basis' = salary period the state's slab is defined on: monthly (compares gross/12), half_yearly (compares gross/2), annual (compares gross directly). 'brackets' give the ANNUAL PT payable (already summing 12/2/1 periods incl. any top-up month), keyed by the upper bound of that bracket on the stated basis; null = no upper bound. Verify against current state notifications before relying on this for filing.",
+    "no_pt_states": [
+      "Andaman and Nicobar Islands", "Arunachal Pradesh", "Chandigarh",
+      "Dadra and Nagar Haveli and Daman and Diu", "Delhi", "Goa", "Haryana",
+      "Himachal Pradesh", "Jammu and Kashmir", "Ladakh", "Lakshadweep",
+      "Rajasthan", "Uttar Pradesh", "Uttarakhand"
+    ],
+    "states": {
+      "Maharashtra": {
+        "basis": "monthly",
+        "brackets_male": [
+          { "upto": 7500, "annual_tax": 0 },
+          { "upto": 10000, "annual_tax": 2100 },
+          { "upto": null, "annual_tax": 2500 }
+        ],
+        "brackets_female": [
+          { "upto": 25000, "annual_tax": 0 },
+          { "upto": null, "annual_tax": 2500 }
+        ]
+      },
+      "Karnataka": {
+        "basis": "monthly",
+        "brackets": [
+          { "upto": 25000, "annual_tax": 0 },
+          { "upto": null, "annual_tax": 2400 }
+        ]
+      },
+      "West Bengal": {
+        "basis": "monthly",
+        "brackets": [
+          { "upto": 10000, "annual_tax": 0 },
+          { "upto": 15000, "annual_tax": 1320 },
+          { "upto": 25000, "annual_tax": 1560 },
+          { "upto": 40000, "annual_tax": 1800 },
+          { "upto": null, "annual_tax": 2400 }
+        ]
+      },
+      "Andhra Pradesh": {
+        "basis": "monthly",
+        "brackets": [
+          { "upto": 15000, "annual_tax": 0 },
+          { "upto": 20000, "annual_tax": 1800 },
+          { "upto": null, "annual_tax": 2400 }
+        ]
+      },
+      "Telangana": {
+        "basis": "monthly",
+        "brackets": [
+          { "upto": 15000, "annual_tax": 0 },
+          { "upto": 20000, "annual_tax": 1800 },
+          { "upto": null, "annual_tax": 2400 }
+        ]
+      },
+      "Gujarat": {
+        "basis": "monthly",
+        "brackets": [
+          { "upto": 12000, "annual_tax": 0 },
+          { "upto": null, "annual_tax": 2400 }
+        ]
+      },
+      "Madhya Pradesh": {
+        "basis": "monthly",
+        "brackets": [
+          { "upto": 18750, "annual_tax": 0 },
+          { "upto": 25000, "annual_tax": 1500 },
+          { "upto": 33333, "annual_tax": 2000 },
+          { "upto": null, "annual_tax": 2500 }
+        ]
+      },
+      "Kerala": {
+        "basis": "half_yearly",
+        "brackets": [
+          { "upto": 12000, "annual_tax": 0 },
+          { "upto": 17999, "annual_tax": 640 },
+          { "upto": 29999, "annual_tax": 900 },
+          { "upto": 44999, "annual_tax": 1200 },
+          { "upto": 99999, "annual_tax": 1500 },
+          { "upto": 124999, "annual_tax": 2000 },
+          { "upto": null, "annual_tax": 2500 }
+        ]
+      },
+      "Tamil Nadu": {
+        "basis": "half_yearly",
+        "brackets": [
+          { "upto": 21000, "annual_tax": 0 },
+          { "upto": 30000, "annual_tax": 360 },
+          { "upto": 45000, "annual_tax": 850 },
+          { "upto": 60000, "annual_tax": 1860 },
+          { "upto": 75000, "annual_tax": 2050 },
+          { "upto": null, "annual_tax": 2500 }
+        ]
+      },
+      "Assam": {
+        "basis": "monthly",
+        "brackets": [
+          { "upto": 10000, "annual_tax": 0 },
+          { "upto": 15000, "annual_tax": 1800 },
+          { "upto": 24999, "annual_tax": 2160 },
+          { "upto": null, "annual_tax": 2496 }
+        ]
+      },
+      "Bihar": {
+        "basis": "annual",
+        "brackets": [
+          { "upto": 300000, "annual_tax": 0 },
+          { "upto": 500000, "annual_tax": 1000 },
+          { "upto": 1000000, "annual_tax": 2000 },
+          { "upto": null, "annual_tax": 2500 }
+        ]
+      },
+      "Jharkhand": {
+        "basis": "annual",
+        "brackets": [
+          { "upto": 300000, "annual_tax": 0 },
+          { "upto": 500000, "annual_tax": 400 },
+          { "upto": 800000, "annual_tax": 600 },
+          { "upto": 1000000, "annual_tax": 700 },
+          { "upto": null, "annual_tax": 832 }
+        ]
+      },
+      "Odisha": {
+        "basis": "annual",
+        "brackets": [
+          { "upto": 159999, "annual_tax": 0 },
+          { "upto": 300000, "annual_tax": 1500 },
+          { "upto": null, "annual_tax": 2500 }
+        ]
+      },
+      "Manipur": {
+        "basis": "annual",
+        "brackets": [
+          { "upto": 50000, "annual_tax": 0 },
+          { "upto": 75000, "annual_tax": 1200 },
+          { "upto": 100000, "annual_tax": 2000 },
+          { "upto": 125000, "annual_tax": 2400 },
+          { "upto": null, "annual_tax": 2500 }
+        ]
+      },
+      "Meghalaya": {
+        "basis": "monthly",
+        "brackets": [
+          { "upto": 4166, "annual_tax": 0 },
+          { "upto": 6250, "annual_tax": 198 },
+          { "upto": 8333, "annual_tax": 300 },
+          { "upto": 12500, "annual_tax": 498 },
+          { "upto": 16666, "annual_tax": 750 },
+          { "upto": 20833, "annual_tax": 1000 },
+          { "upto": 25000, "annual_tax": 1250 },
+          { "upto": 29166, "annual_tax": 1500 },
+          { "upto": 33333, "annual_tax": 1800 },
+          { "upto": 37500, "annual_tax": 2100 },
+          { "upto": 41666, "annual_tax": 2400 },
+          { "upto": null, "annual_tax": 2496 }
+        ]
+      },
+      "Mizoram": {
+        "basis": "monthly",
+        "brackets": [
+          { "upto": 5000, "annual_tax": 0 },
+          { "upto": 8000, "annual_tax": 900 },
+          { "upto": 10000, "annual_tax": 1440 },
+          { "upto": 12000, "annual_tax": 1800 },
+          { "upto": 15000, "annual_tax": 2160 },
+          { "upto": null, "annual_tax": 2496 }
+        ]
+      },
+      "Nagaland": {
+        "basis": "monthly",
+        "brackets": [
+          { "upto": 4000, "annual_tax": 0 },
+          { "upto": 5000, "annual_tax": 420 },
+          { "upto": 7000, "annual_tax": 900 },
+          { "upto": 9000, "annual_tax": 1320 },
+          { "upto": 12000, "annual_tax": 2160 },
+          { "upto": null, "annual_tax": 2496 }
+        ]
+      },
+      "Puducherry": {
+        "basis": "half_yearly",
+        "brackets": [
+          { "upto": 99999, "annual_tax": 0 },
+          { "upto": 200000, "annual_tax": 500 },
+          { "upto": 300000, "annual_tax": 1000 },
+          { "upto": 400000, "annual_tax": 1500 },
+          { "upto": 500000, "annual_tax": 2000 },
+          { "upto": null, "annual_tax": 2500 }
+        ]
+      },
+      "Punjab": {
+        "basis": "monthly",
+        "brackets": [
+          { "upto": 20833, "annual_tax": 0 },
+          { "upto": null, "annual_tax": 2400 }
+        ]
+      },
+      "Sikkim": {
+        "basis": "monthly",
+        "brackets": [
+          { "upto": 20000, "annual_tax": 0 },
+          { "upto": 30000, "annual_tax": 1500 },
+          { "upto": 40000, "annual_tax": 1800 },
+          { "upto": null, "annual_tax": 2400 }
+        ]
+      },
+      "Tripura": {
+        "basis": "monthly",
+        "brackets": [
+          { "upto": 7500, "annual_tax": 0 },
+          { "upto": 15000, "annual_tax": 1800 },
+          { "upto": null, "annual_tax": 2496 }
+        ]
+      },
+      "Chhattisgarh": {
+        "basis": "annual",
+        "brackets": [
+          { "upto": 100000, "annual_tax": 0 },
+          { "upto": 150000, "annual_tax": 130 },
+          { "upto": 200000, "annual_tax": 150 },
+          { "upto": 250000, "annual_tax": 200 },
+          { "upto": null, "annual_tax": 212 }
+        ]
+      }
+    }
   }
 }
