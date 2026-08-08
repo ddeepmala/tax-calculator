@@ -140,11 +140,11 @@
                                 <div class="form-group-row">
                                     <div class="form-group">
                                         <label for="name">Full Name <span class="required">*</span></label>
-                                        <input type="text" id="name" name="name" placeholder="Enter your full name" required value="Deepmala">
+                                        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="age">Age <span class="required">*</span></label>
-                                        <input type="number" id="age" name="age" placeholder="Age (e.g. 35)" min="1" max="120" required value="30">
+                                        <input type="number" id="age" name="age" placeholder="Age (e.g. 35)" min="1" max="120" required>
                                     </div>
                                 </div>
 
@@ -254,7 +254,7 @@
                                 <div class="form-group-row">
                                     <div class="form-group">
                                         <label for="basic_salary">Annual Basic Salary (Rs.) <span class="required">*</span></label>
-                                        <input type="number" id="basic_salary" name="basic_salary" placeholder="e.g. 600000" min="0" required value="800000">
+                                        <input type="number" id="basic_salary" name="basic_salary" placeholder="e.g. 600000" min="0" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="dearness_allowance">Dearness Allowance (DA) (Rs.)</label>
@@ -265,19 +265,19 @@
                                 <div class="form-group-row">
                                     <div class="form-group">
                                         <label for="hra_received">House Rent Allowance (HRA) Received (Annual) (Rs.)</label>
-                                        <input type="number" id="hra_received" name="hra_received" placeholder="e.g. 240000" min="0" value="320000">
+                                        <input type="number" id="hra_received" name="hra_received" placeholder="e.g. 240000" min="0" value="0">
                                         <small class="help-text">Standard CTC housing component.</small>
                                     </div>
                                     <div class="form-group">
                                         <label for="special_allowance">Special Allowance (Rs.)</label>
-                                        <input type="number" id="special_allowance" name="special_allowance" placeholder="e.g. 120000" min="0" value="100000">
+                                        <input type="number" id="special_allowance" name="special_allowance" placeholder="e.g. 120000" min="0" value="0">
                                     </div>
                                 </div>
 
                                 <div class="form-group-row">
                                     <div class="form-group">
                                         <label for="bonus">Annual Bonus / Gratuity / Ex-Gratia (Rs.)</label>
-                                        <input type="number" id="bonus" name="bonus" placeholder="e.g. 80000" min="0" value="50000">
+                                        <input type="number" id="bonus" name="bonus" placeholder="e.g. 80000" min="0" value="0">
                                     </div>
                                     <div class="form-group">
                                         <label for="commission">Commission Received (Rs.)</label>
@@ -288,23 +288,23 @@
                                 <div class="form-group-row">
                                     <div class="form-group">
                                         <label for="children_education_allowance">Children Education Allowance Received (Annual) (Rs.)</label>
-                                        <input type="number" id="children_education_allowance" name="children_education_allowance" placeholder="e.g. 2400" min="0" value="2400">
+                                        <input type="number" id="children_education_allowance" name="children_education_allowance" placeholder="e.g. 2400" min="0" value="0">
                                     </div>
                                     <div class="form-group">
                                         <label for="hostel_allowance">Hostel Allowance Received (Annual) (Rs.)</label>
-                                        <input type="number" id="hostel_allowance" name="hostel_allowance" placeholder="e.g. 7200" min="0" value="7200">
+                                        <input type="number" id="hostel_allowance" name="hostel_allowance" placeholder="e.g. 7200" min="0" value="0">
                                     </div>
                                 </div>
 
                                 <div class="form-group-row">
                                     <div class="form-group">
                                         <label for="employee_pf">Employee PF Contribution (Rs.)</label>
-                                        <input type="number" id="employee_pf" name="employee_pf" placeholder="Auto-saves to 80C" min="0" value="96000">
+                                        <input type="number" id="employee_pf" name="employee_pf" placeholder="Auto-saves to 80C" min="0" value="0">
                                         <small class="help-text">Typically 12% of Basic Salary.</small>
                                     </div>
                                     <div class="form-group">
                                         <label for="employer_pf">Employer PF Contribution (Rs.)</label>
-                                        <input type="number" id="employer_pf" name="employer_pf" placeholder="e.g. 72000" min="0" value="96000">
+                                        <input type="number" id="employer_pf" name="employer_pf" placeholder="e.g. 72000" min="0" value="0">
                                         <small class="help-text">Tax-exempt unless combined with Employer NPS + Superannuation it exceeds Rs. 7,50,000/year.</small>
                                     </div>
                                 </div>
@@ -351,12 +351,13 @@
                                     <h4>HRA Exemption Data</h4>
                                     <div class="form-group-row">
                                         <div class="form-group">
-                                            <label for="hra_received">Annual HRA Received (Rs.)</label>
-                                            <input type="number" id="hra_received" name="hra_received" placeholder="e.g. 240000" min="0" value="320000">
+                                            <label for="hra_received_display">Annual HRA Received (Rs.)</label>
+                                            <input type="number" id="hra_received_display" placeholder="e.g. 240000" min="0" value="0" readonly>
+                                            <small class="help-text">Synced from HRA entered in Salary Details.</small>
                                         </div>
                                         <div class="form-group">
                                             <label for="rent_paid">Annual Rent Paid (Rs.)</label>
-                                            <input type="number" id="rent_paid" name="rent_paid" placeholder="e.g. 180000" min="0" value="240000">
+                                            <input type="number" id="rent_paid" name="rent_paid" placeholder="e.g. 180000" min="0" value="0">
                                         </div>
                                     </div>
                                     <p class="widget-note"><i class="fa-solid fa-circle-info"></i> The system automatically computes the minimum of HRA received, Rent Paid minus 10% Basic+DA, or 50%/40% of Basic+DA depending on city.</p>
@@ -369,14 +370,14 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="telephone_reimbursement">Telephone Reimbursement (Rs.)</label>
-                                        <input type="number" id="telephone_reimbursement" name="telephone_reimbursement" placeholder="e.g. 12000" min="0" value="12000">
+                                        <input type="number" id="telephone_reimbursement" name="telephone_reimbursement" placeholder="e.g. 12000" min="0" value="0">
                                     </div>
                                 </div>
 
                                 <div class="form-group-row">
                                     <div class="form-group">
                                         <label for="internet_reimbursement">Internet Reimbursement (Rs.)</label>
-                                        <input type="number" id="internet_reimbursement" name="internet_reimbursement" placeholder="e.g. 15000" min="0" value="12000">
+                                        <input type="number" id="internet_reimbursement" name="internet_reimbursement" placeholder="e.g. 15000" min="0" value="0">
                                     </div>
                                     <div class="form-group">
                                         <label for="fuel_reimbursement">Fuel Reimbursement (Rs.)</label>
@@ -391,7 +392,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="meal_coupons">Meal Coupons (Exempt Food Vouchers) (Rs.)</label>
-                                        <input type="number" id="meal_coupons" name="meal_coupons" placeholder="e.g. 26400" min="0" value="22000">
+                                        <input type="number" id="meal_coupons" name="meal_coupons" placeholder="e.g. 26400" min="0" value="0">
                                     </div>
                                 </div>
 
@@ -402,14 +403,14 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="books_allowance">Books & Periodicals Allowance (Rs.)</label>
-                                        <input type="number" id="books_allowance" name="books_allowance" placeholder="e.g. 15000" min="0" value="5000">
+                                        <input type="number" id="books_allowance" name="books_allowance" placeholder="e.g. 15000" min="0" value="0">
                                     </div>
                                 </div>
 
                                 <div class="form-group-row">
                                     <div class="form-group">
                                         <label for="prof_dev_reimbursement">Professional Development (Rs.)</label>
-                                        <input type="number" id="prof_dev_reimbursement" name="prof_dev_reimbursement" placeholder="e.g. 25000" min="0" value="10000">
+                                        <input type="number" id="prof_dev_reimbursement" name="prof_dev_reimbursement" placeholder="e.g. 25000" min="0" value="0">
                                     </div>
                                     <div class="form-group">
                                         <label for="other_exempt_reimbursements">Other Exempt Reimbursements (Rs.)</label>
@@ -426,12 +427,12 @@
                                 <div class="form-group-row">
                                     <div class="form-group">
                                         <label for="savings_interest">Savings Account Interest (Rs.)</label>
-                                        <input type="number" id="savings_interest" name="savings_interest" placeholder="e.g. 8000" min="0" value="5000">
+                                        <input type="number" id="savings_interest" name="savings_interest" placeholder="e.g. 8000" min="0" value="0">
                                         <small class="help-text">Deductible up to Rs. 10,000 (under age 60) or Rs. 50,000 (senior citizens).</small>
                                     </div>
                                     <div class="form-group">
                                         <label for="fd_interest">Fixed Deposit Interest (Rs.)</label>
-                                        <input type="number" id="fd_interest" name="fd_interest" placeholder="e.g. 45000" min="0" value="15000">
+                                        <input type="number" id="fd_interest" name="fd_interest" placeholder="e.g. 45000" min="0" value="0">
                                     </div>
                                 </div>
 
@@ -478,7 +479,7 @@
                                     <div class="accordion-grid">
                                         <div class="form-group">
                                             <label for="ppf">Public Provident Fund (PPF) (Rs.)</label>
-                                            <input type="number" id="ppf" name="ppf" placeholder="e.g. 100000" min="0" value="50000">
+                                            <input type="number" id="ppf" name="ppf" placeholder="e.g. 100000" min="0" value="0">
                                         </div>
                                         <div class="form-group">
                                             <label for="elss">Equity Linked Savings (ELSS) (Rs.)</label>
@@ -486,7 +487,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="life_insurance">Life Insurance Premium (Rs.)</label>
-                                            <input type="number" id="life_insurance" name="life_insurance" placeholder="e.g. 25000" min="0" value="40000">
+                                            <input type="number" id="life_insurance" name="life_insurance" placeholder="e.g. 25000" min="0" value="0">
                                         </div>
                                         <div class="form-group">
                                             <label for="sukanya">Sukanya Samriddhi Scheme (Rs.)</label>
@@ -518,7 +519,7 @@
                                 <div class="form-group-row">
                                     <div class="form-group">
                                         <label for="nps_additional_80ccd_1b">Additional NPS Contribution (Self) (Rs.)</label>
-                                        <input type="number" id="nps_additional_80ccd_1b" name="nps_additional_80ccd_1b" placeholder="Max Rs. 50,000" min="0" value="50000">
+                                        <input type="number" id="nps_additional_80ccd_1b" name="nps_additional_80ccd_1b" placeholder="Max Rs. 50,000" min="0" value="0">
                                     </div>
                                     <div class="form-group">
                                         <label for="education_loan_interest">Education Loan Interest (Rs.)</label>
@@ -531,16 +532,16 @@
                                     <div class="form-group-row">
                                         <div class="form-group">
                                             <label for="health_insurance_self">Self, Spouse & Children Premium (Rs.)</label>
-                                            <input type="number" id="health_insurance_self" name="health_insurance_self" placeholder="e.g. 20000" min="0" value="15000">
+                                            <input type="number" id="health_insurance_self" name="health_insurance_self" placeholder="e.g. 20000" min="0" value="0">
                                             <small class="help-text">Max limit: 25k (or 50k if self/spouse senior citizen).</small>
                                         </div>
                                         <div class="form-group">
                                             <label for="health_insurance_parents">Parents Premium (Rs.)</label>
-                                            <input type="number" id="health_insurance_parents" name="health_insurance_parents" placeholder="e.g. 35000" min="0" value="30000">
+                                            <input type="number" id="health_insurance_parents" name="health_insurance_parents" placeholder="e.g. 35000" min="0" value="0">
                                         </div>
                                     </div>
                                     <div class="form-group-checkbox mt-2">
-                                        <input type="checkbox" id="is_parents_senior" name="is_parents_senior" checked>
+                                        <input type="checkbox" id="is_parents_senior" name="is_parents_senior">
                                         <label for="is_parents_senior">Are parents Senior Citizens (Age 60+)? (Raises Parents Cap to Rs. 50,000)</label>
                                     </div>
                                 </div>

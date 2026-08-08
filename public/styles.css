@@ -531,6 +531,11 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 0 0 3px rgba(var(--primary-navy-rgb), 0.15);
 }
 
+.form-group input[readonly] {
+    background-color: var(--input-disabled-bg, rgba(128, 128, 128, 0.08));
+    cursor: not-allowed;
+}
+
 .help-text {
     font-size: 0.75rem;
     color: var(--text-secondary);

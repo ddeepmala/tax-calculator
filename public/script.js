@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initTheme();
     setupWizard();
     setupLiveSalaryUpdates();
+    setupHRASync();
     setupFormSubmission();
     setupDashboardActions();
 });
@@ -270,6 +271,21 @@ function syncPFTo80C() {
     const employeePFVal = document.getElementById("employee_pf").value;
     // Set in the 80C sections
     const defaultPFInput = document.getElementById("ppf"); // Just copy value, or we'll add a PF label in 80C. We'll handle it during collection!
+}
+
+// Keep the read-only HRA Received field in the HRA Exemption step mirrored
+// to the editable HRA Received field entered earlier in Salary Details.
+function setupHRASync() {
+    const sourceInput = document.getElementById("hra_received");
+    const displayInput = document.getElementById("hra_received_display");
+    if (!sourceInput || !displayInput) return;
+
+    const syncValue = () => {
+        displayInput.value = sourceInput.value;
+    };
+
+    sourceInput.addEventListener("input", syncValue);
+    syncValue();
 }
 
 /* ==========================================================================
