@@ -443,6 +443,8 @@ function renderBreakdownTable(old_br, new_br) {
         { label: "Less: HRA Exemption", oldVal: old_br.hra_exemption, newVal: null, isDisallowed: true },
         { label: "Less: LTA Exemption", oldVal: old_br.lta_exemption, newVal: null, isDisallowed: true },
         { label: "Less: Exempt Reimbursements (official use)", oldVal: old_br.reimbursements_exemption, newVal: null, isDisallowed: true },
+        { label: "Less: Children Education Allowance Exemption", oldVal: old_br.children_education_exemption, newVal: null, isDisallowed: true },
+        { label: "Less: Hostel Allowance Exemption", oldVal: old_br.hostel_exemption, newVal: null, isDisallowed: true },
         { label: "Less: Standard Deduction", oldVal: old_br.standard_deduction, newVal: new_br.standard_deduction },
         { label: "Less: Professional Tax", oldVal: old_br.professional_tax, newVal: null, isDisallowed: true },
         { label: "Net Salary Income (B)", oldVal: old_br.net_salary, newVal: new_br.net_salary, class: "total-row" },
@@ -570,6 +572,7 @@ function renderCharts(res) {
         { label: 'Medical Insurance', val: old_br.deductions.sec_80d },
         { label: 'Interest Ded', val: old_br.deductions.interest_deduction },
         { label: 'Employer NPS', val: old_br.deductions.sec_80ccd_2_employer },
+        { label: 'Children Education/Hostel Allowance', val: (old_br.children_education_exemption + old_br.hostel_exemption) },
         { label: 'Other Exemptions/Deds', val: (old_br.lta_exemption + old_br.reimbursements_exemption + old_br.deductions.sec_80e + old_br.deductions.sec_80g) }
     ];
     
@@ -582,8 +585,8 @@ function renderCharts(res) {
             datasets: [{
                 data: activeDeds.map(d => d.val),
                 backgroundColor: [
-                    '#1E3A8A', '#3B82F6', '#10B981', '#F59E0B', 
-                    '#EF4444', '#8B5CF6', '#EC4899', '#6366F1'
+                    '#1E3A8A', '#3B82F6', '#10B981', '#F59E0B',
+                    '#EF4444', '#8B5CF6', '#EC4899', '#6366F1', '#14B8A6'
                 ],
                 borderWidth: isDark ? 2 : 1,
                 borderColor: isDark ? '#1F2937' : '#FFFFFF'
@@ -614,7 +617,8 @@ function renderCharts(res) {
     
     // Sum standard variables
     const deductionsTotalOld = old_br.deductions.total_deductions_eligible;
-    const exemptionsTotalOld = old_br.hra_exemption + old_br.lta_exemption + old_br.reimbursements_exemption + old_br.professional_tax;
+    const exemptionsTotalOld = old_br.hra_exemption + old_br.lta_exemption + old_br.reimbursements_exemption +
+        old_br.children_education_exemption + old_br.hostel_exemption + old_br.professional_tax;
     const otherIncomeOld = old_br.house_property_income + old_br.other_sources_income;
     
     const deductionsTotalNew = new_br.deductions.total_deductions_eligible;
