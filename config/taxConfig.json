@@ -64,8 +64,8 @@
   },
   "deduction_limits": {
     "allowance_exemptions": {
-      "children_education_limit_annual": 2400,
-      "hostel_limit_annual": 7200
+      "children_education_limit_annual": 72000,
+      "hostel_limit_annual": 216000
     },
     "sec_80c": 150000,
     "sec_80ccd_1b": 50000,

@@ -264,7 +264,8 @@ def run_calculation(data):
     # 1. Exemptions (Old Regime)
     hra_exemption = calculate_hra_exemption(basic, da, hra_received, rent_paid, is_metro)
     
-    # Children Education and Hostel Allowance Exemptions (Old Regime u/s 10(14))
+    # Children Education and Hostel Allowance Exemptions (Old Regime), capped at
+    # Rs 3,000/month/child (education) and Rs 9,000/month/child (hostel), up to 2 children.
     children_education_exemption = min(children_education_allowance, TAX_CONFIG['deduction_limits']['allowance_exemptions']['children_education_limit_annual'])
     hostel_exemption = min(hostel_allowance, TAX_CONFIG['deduction_limits']['allowance_exemptions']['hostel_limit_annual'])
     
